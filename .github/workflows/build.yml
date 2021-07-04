@@ -15,7 +15,7 @@ jobs:
   build:
     name: build and publish
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'bump package version')"
+    if: ${{ !startsWith(github.event.head_commit.message, 'bump package version') }}
 
     steps:
       - name: clean working directory
@@ -36,14 +36,14 @@ jobs:
         run: npm run build
 
       - name: bump package version (master)
-        if: "'refs/heads/master' == ${{ github.ref }}"
+        if: ${{ 'refs/heads/master' == github.ref }}
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "BDBuilder"
           npm version patch -m "bump package version to %s"
 
       - name: bump package version (pre-release)
-        if: "'refs/heads/master' == ${{ github.ref }}"
+        if: ${{ 'refs/heads/master' == github.ref }}
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "BDBuilder"
