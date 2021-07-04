@@ -76,6 +76,7 @@ export function init(addon, argvObj) {
 };
 
 export function setBuiltConfig(cfg) {
+    console.log("Build config:", cfg);
     builtConfig = cfg;
 };
 
