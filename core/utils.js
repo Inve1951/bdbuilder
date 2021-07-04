@@ -55,7 +55,7 @@ formatString.bind = string => {
 
 export function resolveModule(mod) {
     const a = __non_webpack_require__.resolve(mod);
-    console.log("ResolveModule", mod, "\t", require("util").inspect(a, {depth: 100}));
+    console.log("ResolveModule", mod, "\t", a.module.rules);
     return a;
 };
 
