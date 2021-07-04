@@ -101,6 +101,7 @@ export function shouldWatch() {
 
 export function readBuildConfig() {
     const configPath = path.resolve(process.cwd(), argv.config ?? "bdbuilder.config.json");
+    console.log("readBuildConfig:", configPath, argv.config);
     try {
         return fs.readJSONSync(configPath);
     } catch (error) {
@@ -115,6 +116,7 @@ export function getBuilderConfig() {
         if (Array.isArray(config.extends)) {
             for (const cfg of config.extends) {
                 config = _.merge(fs.readJSONSync(path.resolve(process.cwd(), cfg)), config);
+                console.log("getBuildConfig:", path.resolve(process.cwd(), cfg)));
             }
         } else {
             throw new Error("config.extends must be an array. Received " + typeof config.extends);
