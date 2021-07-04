@@ -43,7 +43,7 @@ jobs:
           npm version patch -m "bump package version to %s"
 
       - name: bump package version (pre-release)
-        if: ${{ 'refs/heads/master' == github.ref }}
+        if: ${{ 'refs/heads/master' != github.ref }}
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "BDBuilder"
