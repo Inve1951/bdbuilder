@@ -54,8 +54,7 @@ formatString.bind = string => {
 };
 
 export function resolveModule(mod) {
-    const a = __non_webpack_require__.resolve(mod);
-    console.log("ResolveModule", mod, "\t", a);
+    return __non_webpack_require__.resolve(mod);
     return a;
 };
 
@@ -76,7 +75,6 @@ export function init(addon, argvObj) {
 };
 
 export function setBuiltConfig(cfg) {
-    console.log("Build config:", require("util").inspect(cfg, {depth: 1000}));
     builtConfig = cfg;
 };
 
@@ -104,7 +102,6 @@ export function shouldWatch() {
 
 export function readBuildConfig() {
     const configPath = path.resolve(process.cwd(), argv.config ?? "bdbuilder.config.json");
-    console.log("readBuildConfig:", configPath, argv);
     try {
         return fs.readJSONSync(configPath);
     } catch (error) {
@@ -126,8 +123,7 @@ export function getBuilderConfig() {
         }
     }
 
-    var c = _.merge(defaultConfig, config);
-    return c;
+    return _.merge(defaultConfig, config);
 };
 
 const Utils = {
