@@ -15,6 +15,7 @@ jobs:
   build:
     name: build and publish
     runs-on: ubuntu-latest
+    if: "!startsWith(github.event.head_commit.message, 'bump package version')"
 
     steps:
       - name: clean working directory
@@ -34,6 +35,12 @@ jobs:
       - name: build core
         run: npm run build
 
+      - name: bump package version
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "BDBuilder"
+          npm version patch -m "bump package version to %s"
+
       - name: publish
         id: publish
         uses: JS-DevTools/npm-publish@v1
@@ -42,9 +49,8 @@ jobs:
           access: public
           registry: https://npm.pkg.github.com
           tag: latest
-          check-version: false
 
-      - name: detect version change
+      - name: push version change
         if: steps.publish.outputs.type != 'none'
         run: |
-          echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
+          git push
