@@ -35,11 +35,19 @@ jobs:
       - name: build core
         run: npm run build
 
-      - name: bump package version
+      - name: bump package version (master)
+        if: "'refs/heads/master' == ${{ github.ref }}"
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "BDBuilder"
           npm version patch -m "bump package version to %s"
+
+      - name: bump package version (pre-release)
+        if: "'refs/heads/master' == ${{ github.ref }}"
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "BDBuilder"
+          npm version prerelease --preid beta -m "bump package version to %s"
 
       - name: publish
         id: publish
@@ -52,5 +60,4 @@ jobs:
 
       - name: push version change
         if: steps.publish.outputs.type != 'none'
-        run: |
-          git push
+        run: git push
