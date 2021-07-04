@@ -54,7 +54,9 @@ formatString.bind = string => {
 };
 
 export function resolveModule(mod) {
-    return __non_webpack_require__.resolve(mod);
+    const a = __non_webpack_require__.resolve(mod);
+    console.log("ResolveModule", mod, "\t", a);
+    return a;
 };
 
 export function resolveRawGithub(pluginName, path) {
