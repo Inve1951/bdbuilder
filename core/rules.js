@@ -1,7 +1,7 @@
 import {stylesheet, css, js, json, kss} from "./loaders";
 import {resolveModule} from "./utils";
 
-const exclude = /node_modules(?!(?:[^\/]+?\/)?bdbuilder\/common)/;
+const exclude = /node_modules\/(?!(?:[^\/]+?\/)?bdbuilder\/common)/;
 
 export default function rules() {
     const cssLoader = css;
