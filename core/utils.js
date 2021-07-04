@@ -116,7 +116,6 @@ export function getBuilderConfig() {
         if (Array.isArray(config.extends)) {
             for (const cfg of config.extends) {
                 config = _.merge(fs.readJSONSync(path.resolve(process.cwd(), cfg)), config);
-                console.log("getBuildConfig:", path.resolve(process.cwd(), cfg));
             }
         } else {
             throw new Error("config.extends must be an array. Received " + typeof config.extends);
