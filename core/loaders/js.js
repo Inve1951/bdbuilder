@@ -6,7 +6,7 @@ export default function js() {
             loader: resolveModule("babel-loader"),
             options: {
                 presets: [
-                    ["@babel/typescript", {esModuleInterop: true}]
+                    [resolveModule("@babel/typescript"), {esModuleInterop: true}]
                 ],
                 plugins: [
                     "@babel/plugin-transform-react-jsx",
