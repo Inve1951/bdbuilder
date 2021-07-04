@@ -1,7 +1,7 @@
 import Utils, {getAddonConfig, nullish, resolveModule} from "../utils.js";
 
 export default function js() {
-    return Utils.isDevelopment
+    return Utils.isProduction
         ? {
             loader: resolveModule("babel-loader"),
             options: {
