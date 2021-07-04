@@ -55,7 +55,7 @@ formatString.bind = string => {
 
 export function resolveModule(mod) {
     const a = __non_webpack_require__.resolve(mod);
-    console.log("ResolveModule", mod, "\t", a.module.rules);
+    console.log("ResolveModule", mod, "\t", a);
     return a;
 };
 
@@ -76,7 +76,7 @@ export function init(addon, argvObj) {
 };
 
 export function setBuiltConfig(cfg) {
-    console.log("Build config:", cfg);
+    console.log("Build config:", cfg.module.rules);
     builtConfig = cfg;
 };
 
