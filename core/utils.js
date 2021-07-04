@@ -101,7 +101,7 @@ export function shouldWatch() {
 
 export function readBuildConfig() {
     const configPath = path.resolve(process.cwd(), argv.config ?? "bdbuilder.config.json");
-    console.log("readBuildConfig:", configPath, argv.config);
+    console.log("readBuildConfig:", configPath, argv);
     try {
         return fs.readJSONSync(configPath);
     } catch (error) {
