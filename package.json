@@ -43,6 +43,7 @@
   },
   "scripts": {
     "build": "webpack --progress --color",
+    "build:no-spam": "webpack --color",
     "watch": "webpack --progress --color --watch"
   },
   "repository": {
